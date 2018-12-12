@@ -1,0 +1,60 @@
+import java.util.Iterator;
+import java.util.List;
+
+public class Student {
+	String name;
+	int course;
+
+	public Student(String n, int c) {
+		name = n;
+		course = c;
+	}
+
+	String getName() {
+		return name;
+	}
+
+	int getCourse() {
+		return course;
+	}
+
+	void printStudents(List<Student> students, int course) {
+		Iterator<Student> iter = students.iterator();
+		while (iter.hasNext()) {
+			Student now = (Student) iter.next();
+			if (now.getCourse() == course)
+				System.out.println(now.getName());
+		}
+
+	}
+
+}
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Student s1 = new Student("Artem", 1);
+		Student s2 = new Student("Vasya", 2);
+		Student s3 = new Student("Sveta", 3);
+		Student s4 = new Student("Bob", 3);
+		Student s5 = new Student("Fill", 1);
+		Student s6 = new Student("Oka", 1);
+		Student s7 = new Student("Lisa", 2);
+
+		List<Student> people = new ArrayList<Student>();// ���� �������
+
+		people.add(s1);
+		people.add(s2);
+		people.add(s3);
+		people.add(s4);
+		people.add(s5);
+		people.add(s6);
+		people.add(s7);
+
+		s1.printStudents(people, 3);
+	}
+
+}
