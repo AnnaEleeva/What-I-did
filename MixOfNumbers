@@ -1,0 +1,74 @@
+import java.util.Iterator;
+import java.util.LinkedHashSet;
+import java.util.Set;
+
+public class Methods {
+	static Set<Integer> result = new LinkedHashSet<Integer>();
+	static Set<Integer> result2 = new LinkedHashSet<Integer>();
+
+	Set union(Set set1, Set set2) {
+		Go(set1);
+		Go(set2);
+		return result;
+	}
+
+	Set intersect(Set set1, Set set2) {
+		Iterator iter1 = set1.iterator();
+		while (iter1.hasNext()) {
+			int now1 = (int) iter1.next();
+			Iterator iter2 = set2.iterator();
+			while (iter2.hasNext()) {
+				int now2 = (int) iter2.next();
+				if(now1==now2)
+				result2.add(now2);
+			}	
+		}
+		return result2;
+	}
+
+	void Go(Set set) {
+		Iterator iter = set.iterator();
+		while (iter.hasNext()) {
+			int now = (int) iter.next();
+			result.add(now);
+		}
+	}
+
+	void print(Set set) {
+		Iterator iter = set.iterator();
+		while (iter.hasNext()) {
+			int now = (int) iter.next();
+			System.out.print(now + " ");
+		}
+	}
+}
+
+import java.util.LinkedHashSet;
+import java.util.Set;
+
+public class Main {
+
+	public static void main(String[] args) {
+
+		Set<Integer> box1 = new LinkedHashSet<Integer>();
+		box1.add(1);
+		box1.add(2);
+		box1.add(7);
+		box1.add(5);
+		box1.add(0);
+		box1.add(9);
+		Set<Integer> box2 = new LinkedHashSet<Integer>();
+		box2.add(3);
+		box2.add(2);
+		box2.add(7);
+		box2.add(1999);
+		box2.add(2507);
+		box2.add(9234);
+
+		Methods m = new Methods();
+		m.print(m.union(box1, box2));
+		System.out.println("");
+		m.print(m.intersect(box1, box2));
+	}
+
+}
